@@ -1,27 +1,26 @@
 package cadastro;
 
-import java.util.Scanner;
-
 public class CadastroProduto {
 
-	public String nome;
-    public int unitario;
-    public String unidade;
-    public double estoque;
-    private char inserir;
+	protected  String nome;
+	protected double preco;
+	protected String unidade;
+	protected int estoque = 0;
+	protected char inserir;
     
-
-    public String getNome() {
+	
+	protected  String getNome() {
 		return nome;
 	}
-	public void setNome(String nome) {
+	protected void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getUnitario() {
-		return unitario;
+	
+	public double getPreco() {
+		return preco;
 	}
-	public void setUnitario(int unitario) {
-		this.unitario = unitario;
+	public void setPreco(double preco) {
+		this.preco = preco;
 	}
 	public String getUnidade() {
 		return unidade;
@@ -32,7 +31,7 @@ public class CadastroProduto {
 	public double getEstoque() {
 		return estoque;
 	}
-	public void setEstoque(double estoque) {
+	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
 	public char getInserir() {
@@ -41,33 +40,16 @@ public class CadastroProduto {
 	public void setInserir(char inserir) {
 		this.inserir = inserir;
 	}
+	public CadastroProduto(String nome, double preco, String unidade, int estoque) {
+		this.nome = nome;
+		this.preco = preco;
+		this.unidade = unidade;
+		this.estoque = estoque;
+	}
 	public CadastroProduto() {
-    }
-    public CadastroProduto(String nome, int unitario, String unidade, double estoque) {
-        this.nome = nome;
-        this.unitario = unitario;
-        this.unidade = unidade;
-        this.estoque = estoque;
-    }
-    
-    public static void inserir(String nome, int unitario, String unidade, double estoque) {
-    	int [] vetor = null;
-    	for(int i = 0; i < vetor.length; i++) {
-			///vetor[i] = new teclado(System.in);
-    		i++;
-    	}
-    }
-    public static void inserirProduto() {
-    	Scanner teclado = new Scanner(System.in);
-    	System.out.println("Nome do produto");
-    	String nome = teclado.nextLine();
-    	System.out.println("quantidade inutaria");
-    	int unitario = teclado.nextInt();
-    	System.out.println("Unidade de medida");
-    	String unidade = teclado.nextLine();
-    	System.out.println("quantidade de estoque");
-    	Double estoque = teclado.nextDouble();
-    	inserir(nome, unitario, unidade, estoque);
-    }
+
+	}
+	
+	
     
 }
