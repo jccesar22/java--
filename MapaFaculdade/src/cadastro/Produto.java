@@ -1,6 +1,7 @@
 package cadastro;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -91,7 +92,8 @@ public class Produto extends CadastroProduto {
 		boolean achou = false;
 		for (int i = 0; i < cadastro.size(); i++) {
 			if (cadastro.get(i).getNome().contains(consulta))
-				cadastro.getClass();
+				////System.out.println(cadastro(i));
+				//verificar sobre como imprimir todos os produtos junto
 				achou = true;
 		}
 		if (!achou) {
@@ -119,7 +121,7 @@ public class Produto extends CadastroProduto {
 		}
 
 	}
-	protected void dadosConsulta() {
+	public void dadosConsulta() {
 		System.out.println("Dados da pesquisa");
 		System.out.println("Nome: " + this.getNome());
 		System.out.println("Preco: " + this.getPreco());
