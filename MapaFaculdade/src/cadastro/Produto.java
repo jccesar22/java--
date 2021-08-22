@@ -1,11 +1,8 @@
 package cadastro;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-
 
 public class Produto extends CadastroProduto {
 	static Scanner teclado = new Scanner(System.in);
@@ -56,6 +53,7 @@ public class Produto extends CadastroProduto {
 	}
 
 	static List<CadastroProduto> cadastro = new ArrayList<>();
+	private static int i;
 
 	public static void inserirProduto() {
 		System.out.println("*****************************TELA DE CADASTRO **********************************");
@@ -91,16 +89,19 @@ public class Produto extends CadastroProduto {
 		String consulta = teclado.nextLine();
 		boolean achou = false;
 		for (int i = 0; i < cadastro.size(); i++) {
-			if (cadastro.get(i).getNome().contains(consulta))
-				////System.out.println(cadastro(i));
-				//verificar sobre como imprimir todos os produtos junto
-				achou = true;
-		}
-		if (!achou) {
-			System.out.println("Produto não cadastrado");
+			if (cadastro.get(i).getNome().contains(consulta)) {
+				 System.out.println("Produto \nNome: " + cadastro.get(i).getNome() +
+						 "\nPreco unitaria: "+ cadastro.get(i).getPreco()
+							+ "\nUnidade de medida: " + cadastro.get(i).getUnidade() + "\nquantidade de estoque"
+							+ cadastro.get(i).getEstoque());}
+					achou = true;
+				}
+			if (!achou) {
+				System.out.println("Produto não cadastrado");
+			}
 		}
 
-	}
+	
 
 	public static void exclusao() {
 		System.out.println(
@@ -120,13 +121,6 @@ public class Produto extends CadastroProduto {
 			System.out.println("Produto não encontrado");
 		}
 
-	}
-	public void dadosConsulta() {
-		System.out.println("Dados da pesquisa");
-		System.out.println("Nome: " + this.getNome());
-		System.out.println("Preco: " + this.getPreco());
-		System.out.println("Unidade de medida: " + this.getUnidade());
-		System.out.println("Estoque: " + this.getEstoque());
 	}
 
 }

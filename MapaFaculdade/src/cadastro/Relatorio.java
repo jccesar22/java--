@@ -2,6 +2,11 @@ package cadastro;
 
 public class Relatorio extends Produto {
 
+	public Relatorio(String nome, double preco, String unidade, int estoque, String consulta) {
+		super(nome, preco, unidade, estoque, consulta);
+		// TODO Auto-generated constructor stub
+	}
+
 	// relatorio da lista de produtos cadastrado
 	public static void relatorio() {
 		int cont = 1;

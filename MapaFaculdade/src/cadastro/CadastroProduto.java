@@ -2,20 +2,17 @@ package cadastro;
 
 public class CadastroProduto {
 
-	protected  String nome;
+	protected String nome;
 	protected double preco;
 	protected String unidade;
 	protected int estoque = 0;
 	protected char inserir;
-    
-	
-	protected  String getNome() {
+	public String getNome() {
 		return nome;
 	}
-	protected void setNome(String nome) {
+	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
 	public double getPreco() {
 		return preco;
 	}
@@ -28,7 +25,7 @@ public class CadastroProduto {
 	public void setUnidade(String unidade) {
 		this.unidade = unidade;
 	}
-	public double getEstoque() {
+	public int getEstoque() {
 		return estoque;
 	}
 	public void setEstoque(int estoque) {
@@ -47,8 +44,14 @@ public class CadastroProduto {
 		this.estoque = estoque;
 	}
 	public CadastroProduto() {
-
+	
 	}
+	@Override
+	public String toString() {
+		return "CadastroProduto [nome=" + nome + ", preco=" + preco + ", unidade=" + unidade + ", estoque=" + estoque
+				+ "]";
+	}
+    
 	
 	
     
