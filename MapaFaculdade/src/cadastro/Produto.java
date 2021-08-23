@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class Produto extends CadastroProduto {
 	static Scanner teclado = new Scanner(System.in);
 	public String consulta;
+	public static String opcao;
+	
 
 	public String getConsulta() {
 		return consulta;
@@ -26,8 +28,8 @@ public class Produto extends CadastroProduto {
 
 		do {
 			System.out.println("****************************TELA 1.1****************************************");
-			System.out.println("1 - INCLUS√O\r\n" + "2 - ALTERA«√O\r\n" + "3 - CONSULTA\r\n" + "4 - EXCLUS√O\r\n"
-					+ "0 - RETORNAR\r\n" + "OP«√O: _");
+			System.out.println("1 - INCLUS√ÉO\r\n" + "2 - ALTERA√á√ÉO\r\n" + "3 - CONSULTA\r\n" + "4 - EXCLUS√ÉO\r\n"
+					+ "0 - RETORNAR\r\n" + "OP√á√ÉO: _");
 			op = teclado.nextInt();
 			switch (op) {
 			case 1:
@@ -53,36 +55,26 @@ public class Produto extends CadastroProduto {
 	}
 
 	static List<CadastroProduto> cadastro = new ArrayList<>();
-	private static int i;
 
 	public static void inserirProduto() {
 		System.out.println("*****************************TELA DE CADASTRO **********************************");
-		System.out.println("EMPRESA DE IMPORTA«√O DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
-				+ "INCLUS√O DE PRODUTO\n\n");
-		teclado.nextLine();
-		System.out.println("Nome do produto");
-		String nome = teclado.nextLine();
-		System.out.println("quantidade unitario");
-		double preco = teclado.nextDouble();
-		System.out.println("Unidade de medida");
-		teclado.nextLine();
-		String unidade = teclado.nextLine();
-		System.out.println("quantidade de estoque");
-		int estoque = teclado.nextInt();
-
-		cadastro.add(new CadastroProduto(nome, preco, unidade, estoque));
+		System.out.println("EMPRESA DE IMPORTA√á√ÉO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
+				+ "INCLUS√ÉO DE PRODUTO\n\n");
+		ValidacaoProduto();
+	
+		
 
 	}
 
 	public static void alteracao() {
 		System.out.println("*****************************_TELA DE ALTERACAO_**********************************");
-		System.out.println("EMPRESA DE IMPORTA«√O DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
-				+ "ALTERA«√O DE PRODUTO");
+		System.out.println("EMPRESA DE IMPORTA√á√ÉO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
+				+ "ALTERA√á√ÉO DE PRODUTO");
 	}
 
 	protected static void consultar() {
 		System.out.println("*****************************_TELA DE CONSULTAR_**********************************");
-		System.out.println("EMPRESA DE IMPORTA«√O DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
+		System.out.println("EMPRESA DE IMPORTA√á√ÉO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
 				+ "CONSULTA DE PRODUTO");
 		System.out.println("digite o nome do produto:");
 		teclado.nextLine();
@@ -90,25 +82,23 @@ public class Produto extends CadastroProduto {
 		boolean achou = false;
 		for (int i = 0; i < cadastro.size(); i++) {
 			if (cadastro.get(i).getNome().contains(consulta)) {
-				 System.out.println("Produto \nNome: " + cadastro.get(i).getNome() +
-						 "\nPreco unitaria: "+ cadastro.get(i).getPreco()
-							+ "\nUnidade de medida: " + cadastro.get(i).getUnidade() + "\nquantidade de estoque"
-							+ cadastro.get(i).getEstoque());}
-					achou = true;
-				}
-			if (!achou) {
-				System.out.println("Produto n„o cadastrado");
+				System.out.println("Produto \nNome: " + cadastro.get(i).getNome() + "\nPreco unitaria: "
+						+ cadastro.get(i).getPreco() + "\nUnidade de medida: " + cadastro.get(i).getUnidade()
+						+ "\nquantidade de estoque" + cadastro.get(i).getEstoque());
 			}
+			achou = true;
 		}
-
-	
+		if (!achou) {
+			System.out.println("Produto n√£o cadastrado");
+		}
+	}
 
 	public static void exclusao() {
 		System.out.println(
 				"*****************************_TELA DE EXCLUSAO DE PRODUTO_**********************************");
 
-		System.out.println("EMPRESA DE IMPORTA«√O DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
-				+ "EXCLUS√O DE PRODUTO");
+		System.out.println("EMPRESA DE IMPORTA√á√ÉO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
+				+ "EXCLUS√ÉO DE PRODUTO");
 		System.out.println("digite o nome do produto:");
 		String consulta = teclado.nextLine();
 		boolean achou = false;
@@ -118,9 +108,56 @@ public class Produto extends CadastroProduto {
 			achou = true;
 		}
 		if (!achou) {
-			System.out.println("Produto n„o encontrado");
+			System.out.println("Produto n√£o encontrado");
 		}
 
 	}
 
-}
+	/// valida√ß√£o do nome de cadastro junto com a valida√ß√£o de quantidade e valo
+	public static void ValidacaoProduto() {
+		boolean achou = false;
+		teclado.nextLine();
+		System.out.println("Nome do produto");
+		String nome = teclado.nextLine();
+		
+		for (int i = 0; i < cadastro.size(); i++) {
+			if (cadastro.get(i).getNome().equals(nome)) {///cadastro.get(i).getNome().contains(nome)
+				System.out.println("Produto ja cadastrado");
+				 achou = true;
+			}
+			}
+			///achou = false;
+		if(achou != true) {
+			System.out.println("Preco unitario");
+			double preco = teclado.nextDouble();
+			while (preco < 0) {
+				System.out.println("Preco abaixo do permitido");
+				System.out.println("Preco unitario");
+				preco = teclado.nextDouble();
+			}
+			System.out.println("Unidade de medida");
+			teclado.nextLine();
+			String unidade = teclado.nextLine();
+			System.out.println("quantidade de estoque");
+			int estoque = teclado.nextInt();
+			while (estoque < 0) {
+				System.out.println("Preco abaixo do permitido");
+				System.out.println("quantidade de estoque");
+				estoque = teclado.nextInt();
+			}
+			System.out.print("CONFIRMA INCLUSÔøΩO (S/N)? :");
+			teclado.nextLine();
+			String opcao = teclado.nextLine();
+			if (opcao.equals("s")) {
+				cadastro.add(new CadastroProduto(nome, preco, unidade, estoque));
+				System.out.println("Produto cadastrado com sucesso");
+			} else {
+				System.out.println("produto nÔøΩo pode ser cadastrado");
+
+			
+		}}}
+	//	achou = false;
+	
+}	
+	
+

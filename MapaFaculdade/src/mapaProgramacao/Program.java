@@ -36,8 +36,8 @@ public class Program {
 	                    + "4 - RELATÓRIOS\n"
 	                    + "0 - FINALIZAR\n"
 	                    + "OPÇÃO: _");
-	          Scanner teclado1 = new Scanner(System.in);
-	            op = teclado1.nextInt();
+	          Scanner teclado = new Scanner(System.in);
+	            op = teclado.nextInt();
 	            switch (op) {
 	                case 1:
 	                	System.out.println("opcão 1");

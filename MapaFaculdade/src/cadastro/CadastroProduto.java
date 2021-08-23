@@ -46,13 +46,5 @@ public class CadastroProduto {
 	public CadastroProduto() {
 	
 	}
-	@Override
-	public String toString() {
-		return "CadastroProduto [nome=" + nome + ", preco=" + preco + ", unidade=" + unidade + ", estoque=" + estoque
-				+ "]";
-	}
-    
-	
-	
-    
+	    
 }
