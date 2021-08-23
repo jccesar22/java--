@@ -8,7 +8,6 @@ public class Produto extends CadastroProduto {
 	static Scanner teclado = new Scanner(System.in);
 	public String consulta;
 	public static String opcao;
-	
 
 	public String getConsulta() {
 		return consulta;
@@ -22,7 +21,7 @@ public class Produto extends CadastroProduto {
 	public void setConsulta(String consulta) {
 		this.consulta = consulta;
 	}
-
+//tela. 1.1
 	public static void menuTela1() {
 		int op = 0;
 
@@ -55,23 +54,35 @@ public class Produto extends CadastroProduto {
 	}
 
 	static List<CadastroProduto> cadastro = new ArrayList<>();
-
+///adiconando produtos
 	public static void inserirProduto() {
 		System.out.println("*****************************TELA DE CADASTRO **********************************");
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
 				+ "INCLUSÃO DE PRODUTO\n\n");
 		ValidacaoProduto();
-	
-		
 
 	}
-
+///metodo de alteracao >>>>>>>>>>>>não esta funcionando
 	public static void alteracao() {
 		System.out.println("*****************************_TELA DE ALTERACAO_**********************************");
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
-				+ "ALTERAÇÃO DE PRODUTO");
+				+ "ALTERAÇÃO DE PRODUTO");	
+		System.out.println("digite o nome do produto:");
+		teclado.nextLine();
+		String consulta = teclado.nextLine();
+		boolean achou = false;
+		for (int i = 0; i < cadastro.size(); i++) {
+			if (cadastro.get(i).getNome().contains(consulta)) {
+				cadastro.get(i).setNome(consulta);
+			}
+			achou = true;
+		}
+		if (!achou) {
+			System.out.println("Produto não cadastrado");
+		}
+		
 	}
-
+//metodo para poder consultatr
 	protected static void consultar() {
 		System.out.println("*****************************_TELA DE CONSULTAR_**********************************");
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
@@ -92,7 +103,7 @@ public class Produto extends CadastroProduto {
 			System.out.println("Produto não cadastrado");
 		}
 	}
-
+//metodo para excluir , ele deleta apartir do inicial
 	public static void exclusao() {
 		System.out.println(
 				"*****************************_TELA DE EXCLUSAO DE PRODUTO_**********************************");
@@ -100,18 +111,24 @@ public class Produto extends CadastroProduto {
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
 				+ "EXCLUSÃO DE PRODUTO");
 		System.out.println("digite o nome do produto:");
+		teclado.nextLine();
 		String consulta = teclado.nextLine();
 		boolean achou = false;
 		for (int i = 0; i < cadastro.size(); i++) {
-			if (cadastro.get(i).getNome().contains(consulta))
-				cadastro.remove(i);
+			if (cadastro.get(i).getNome().contains(consulta)) {
+				System.out.println("CONFIRMA EXCLUSÃO (S/N)?");
+				String op = teclado.nextLine();
+				if(op == "s") {
+				cadastro.remove(i).getNome();
+				
+			}
 			achou = true;
 		}
 		if (!achou) {
-			System.out.println("Produto não encontrado");
+			System.out.println("Produto não cadastrado");
 		}
-
-	}
+		
+	}}
 
 	/// validação do nome de cadastro junto com a validação de quantidade e valo
 	public static void ValidacaoProduto() {
@@ -119,15 +136,13 @@ public class Produto extends CadastroProduto {
 		teclado.nextLine();
 		System.out.println("Nome do produto");
 		String nome = teclado.nextLine();
-		
 		for (int i = 0; i < cadastro.size(); i++) {
-			if (cadastro.get(i).getNome().equals(nome)) {///cadastro.get(i).getNome().contains(nome)
+			if (cadastro.get(i).getNome().equals(nome)) {/// cadastro.get(i).getNome().contains(nome)
 				System.out.println("Produto ja cadastrado");
-				 achou = true;
+				achou = true;
 			}
-			}
-			///achou = false;
-		if(achou != true) {
+		}
+		if (achou != true) {
 			System.out.println("Preco unitario");
 			double preco = teclado.nextDouble();
 			while (preco < 0) {
@@ -154,10 +169,9 @@ public class Produto extends CadastroProduto {
 			} else {
 				System.out.println("produto n�o pode ser cadastrado");
 
-			
-		}}}
-	//	achou = false;
-	
-}	
+			}
+		}
+	}
 	
 
+}
