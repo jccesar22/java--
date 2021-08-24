@@ -6,15 +6,19 @@ import java.util.Scanner;
 
 public class Produto extends CadastroProduto {
 	static Scanner teclado = new Scanner(System.in);
-	public String consulta;
 	public static String opcao;
-
-	public String getConsulta() {
-		return consulta;
+	
+	public Produto() {
+		
 	}
-	public void setConsulta(String consulta) {
-		this.consulta = consulta;
+	public Produto(String nome, double preco, String unidade, int estoque) {
+		this.nome = nome;
+		this.preco = preco;
+		this.unidade = unidade;
+		this.estoque = estoque;
 	}
+	   
+		
 
 //tela. 1.1
 	public static void menuTela1() {
@@ -106,7 +110,6 @@ public class Produto extends CadastroProduto {
 				while (preco < 0) {
 					System.out.println("Preco abaixo do permitido");
 					System.out.println("Preco unitario");
-
 				}
 				System.out.println("Unidade de medida");
 				teclado.nextLine();
@@ -145,7 +148,7 @@ public class Produto extends CadastroProduto {
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
 				+ "CONSULTA DE PRODUTO");
 		System.out.println("digite o nome do produto:");
-		teclado.nextLine();
+		System.out.println();
 		String consulta = teclado.nextLine();
 		boolean achou = false;
 		for (int i = 0; i < cadastro.size(); i++) {

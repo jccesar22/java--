@@ -2,7 +2,15 @@ package cadastro;
 
 public class Relatorio extends Produto {
 
-	
+	public Relatorio() {
+		
+	}
+	public Relatorio(String nome, double preco, String unidade, int estoque) {
+		this.nome = nome;
+		this.preco = preco;
+		this.unidade = unidade;
+		this.estoque = estoque;
+	}
 
 	// relatorio da lista de produtos cadastrado
 	public static void relatorio() {

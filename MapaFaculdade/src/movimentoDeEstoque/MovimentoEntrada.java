@@ -53,7 +53,30 @@ public class MovimentoEntrada extends Produto{
 	}
 	
 	public static void entradaQtd() {
+		teclado.nextLine();
 		boolean achou = false;
+		System.out.println("digite o nome do produto:");
+		String consulta = teclado.nextLine();
+		for (int i = 0; i < cadastro.size(); i++) {
+			if (cadastro.get(i).getNome().contains(consulta)) {
+				System.out.println("O produto: "+ cadastro.get(i).getNome());
+				System.out.println("A quantidade atual e de: "+ cadastro.get(i).getEstoque());
+				System.out.println("Qual e a quantidade desejada para entrada de estoque?:" );
+				int estoque = teclado.nextInt();
+				if (opcao.equals("s")) {
+					cadastro.get(i).setEstoque(estoque + cadastro.get(i).getEstoque());
+					cadastro.get(i).getEstoque();
+					System.out.println("Produto alterado com sucesso");
+				} else {
+					System.out.println("produto nao pode ser cadastrado");
+					achou = true;
+				}
+			}
+			if (achou != true) {
+				System.out.println("Produto não cadastrado");
+			}
+			}
+		/*boolean achou = false;
 		System.out.println("*****************************_TELA DE ENTRADA DE ESTOQUE**********************************");
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n"
 				+ "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
@@ -66,28 +89,29 @@ public class MovimentoEntrada extends Produto{
 				System.out.println("O produto: "+ cadastro.get(i).getNome());
 				System.out.println("A quantidade atual e de: "+ cadastro.get(i).getEstoque());
 				System.out.println("Qual e a quantidade desejada para entrada de estoque?:" );
-				System.out.println("quantidade de estoque");
 				int estoque = teclado.nextInt();
 				while (estoque <= 0) {
 					System.out.println("Preco abaixo do permitido");
 					System.out.println("quantidade de estoque");
 					estoque = teclado.nextInt();
 				}
-				System.out.print("CONFIRMA INCLUS�O (S/N)? :");
+				System.out.print("CONFIRMA INCLUSAO (S/N)? :");
 				teclado.nextLine();
 				String opcao = teclado.nextLine();
 				if (opcao.equals("s")) {
-					 cadastro.get(i).setEstoque(estoque + cadastro.get(i).getEstoque());
+					cadastro.get(i).setEstoque(estoque + cadastro.get(i).getEstoque());
 					cadastro.get(i).getEstoque();
 				}else {
 					System.out.println("Entrada de estoque nao realizada");
+					achou = true;
 				}
 				
 				
 			}
-		}if (!achou) {
-			System.out.println("Produto não cadastrado");
 		}
+		if (!achou) {
+			System.out.println("Produto não cadastrado");
+		}*/
 
 	}
 	
@@ -101,7 +125,7 @@ public class MovimentoEntrada extends Produto{
 		String consulta = teclado.nextLine();
 		teclado.nextLine();
 		for (int i = 0; i < cadastro.size(); i++) {
-			if (cadastro.get(i).getNome().contains(consulta)) {
+			if (cadastro.get(i).getNome().equals(consulta)) {
 				System.out.println("O produto: "+ cadastro.get(i).getNome());
 				System.out.println("A quantidade atual e de: "+ cadastro.get(i).getEstoque());
 				System.out.println("Qual e a quantidade desejada para entrada de estoque?:" );
@@ -120,6 +144,7 @@ public class MovimentoEntrada extends Produto{
 					cadastro.get(i).getEstoque();
 				}else {
 					System.out.println("Entrada de estoque nao realizada");
+					achou = true;
 				}
 				
 				

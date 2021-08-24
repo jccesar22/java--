@@ -32,8 +32,9 @@ public class CadastroProduto {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	public CadastroProduto() {
 	
+	public CadastroProduto() {
+		
 	}
 	public CadastroProduto(String nome, double preco, String unidade, int estoque) {
 		super();
@@ -42,6 +43,5 @@ public class CadastroProduto {
 		this.unidade = unidade;
 		this.estoque = estoque;
 	}
-	
 	    
 }
