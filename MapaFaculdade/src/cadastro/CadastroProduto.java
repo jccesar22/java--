@@ -2,23 +2,17 @@ package cadastro;
 
 public class CadastroProduto {
 
-	protected String nome;
-	protected double preco;
-	protected String unidade;
-	protected int estoque = 0;
-	protected char inserir;
+	public String nome;
+	public  double preco;
+	public String unidade;
+	public int estoque = 0;
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public double getPreco() {
-		return preco;
-	}
-	public void setPreco(double preco) {
-		this.preco = preco;
-	}
+	
 	public String getUnidade() {
 		return unidade;
 	}
@@ -31,20 +25,23 @@ public class CadastroProduto {
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
 	}
-	public char getInserir() {
-		return inserir;
+	
+	public double getPreco() {
+		return preco;
 	}
-	public void setInserir(char inserir) {
-		this.inserir = inserir;
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+	public CadastroProduto() {
+	
 	}
 	public CadastroProduto(String nome, double preco, String unidade, int estoque) {
+		super();
 		this.nome = nome;
 		this.preco = preco;
 		this.unidade = unidade;
 		this.estoque = estoque;
 	}
-	public CadastroProduto() {
 	
-	}
 	    
 }
