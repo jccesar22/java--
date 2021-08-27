@@ -20,9 +20,9 @@ public class Relatorio extends Produto {
 		} else {System.out.println("Realatorios de produtos cadastrados");
 			for (CadastroProduto cons : cadastro) {
 				System.out.println("*************************************************************************");
-				System.out.println("Produto " + cont + "\nNome: " + cons.getNome() + "\nPreco unitaria: "
-						+ cons.getPreco() + "\nUnidade de medida: " + cons.getUnidade() + "\nquantidade de estoque: "
-						+ cons.getEstoque());
+				System.out.printf("Produto " + cont + "\nNome: " + cons.getNome() + "\nPreco unitaria: %.2f"
+						 +"\nUnidade de medida: " + cons.getUnidade() + "\nquantidade de estoque: "
+						+ cons.getEstoque(), cons.getPreco());
 				System.out.println();
 				cont++;
 

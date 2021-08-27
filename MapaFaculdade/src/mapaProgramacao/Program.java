@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import cadastro.Produto;
 import cadastro.Relatorio;
+import console.Console;
+import edicaoPreco.EdicaoPreco;
 import movimentoDeEstoque.MovimentoEntrada;
 
 
@@ -32,6 +34,7 @@ public class Program {
 				break;
 			case 3:
 				System.out.println("opcão 3");
+				EdicaoPreco.edicaoPsitivo();
 				break;
 			case 4:
 				System.out.println("opcão 4");

@@ -4,21 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import console.Console;
+
 public class Produto extends CadastroProduto {
 	static Scanner teclado = new Scanner(System.in);
 	public static String opcao;
-	
+
 	public Produto() {
-		
+
 	}
+
 	public Produto(String nome, double preco, String unidade, int estoque) {
 		this.nome = nome;
 		this.preco = preco;
 		this.unidade = unidade;
 		this.estoque = estoque;
 	}
-	   
-		
 
 //tela. 1.1
 	public static void menuTela1() {
@@ -33,48 +34,45 @@ public class Produto extends CadastroProduto {
 			case 1:
 				System.out.println("telas 1.1.1");
 				inserirProduto();
-				System.out.print("repetir criacao de um novo produto(S/N)? :");
-				String opcao = teclado.nextLine();
+				String opcao = Console.read("repetir criacao de um novo produto(S/N)? :");
 				if (opcao.equals("s")) {
-					inserirProduto();		
-					} else {
+					inserirProduto();
+				} else {
 					System.out.println("Finalizando cadastro");
-			}
+				}
 				break;
 			case 2:
 				System.out.println("telas 1.1.2");
 				alteracao();
-				System.out.print("repetir alteração de um novo produto(S/N)? :");
-				String opcao2 = teclado.nextLine();
+				String opcao2 = Console.read("repetir alteração de um novo produto(S/N)? :");
 				if (opcao2.equals("s")) {
 					alteracao();
 				} else {
 					System.out.println("Finalizando alteracao");
-			}
+				}
 				break;
 			case 3:
 				System.out.println("telas 1.1.3");
 				consultar();
-				System.out.print("repetir consulta de um novo produto(S/N)? :");
-				String opcao3 = teclado.nextLine();
+				String opcao3 = Console.read("repetir alteração de um novo produto(S/N)? :");
 				if (opcao3.equals("s")) {
-					alteracao();
+					consultar();
 				} else {
 					System.out.println("Finalizando consulta");
-			}
+				}
+
 				break;
 			case 4:
 				System.out.println("telas 1.1.4");
 				exclusao();
-				System.out.print("repetir exclusao de um novo produto(S/N)? :");
-				String opcao4 = teclado.nextLine();
+				String opcao4 = Console.read("repetir exclusao de um novo produto(S/N)? : ");
 				if (opcao4.equals("s")) {
-					alteracao();
+					exclusao();
 				} else {
 					System.out.println("Finalizando exclusao");
-			}
-				default:
-					System.out.println("Digite uma opcao valida");
+				}
+			default:
+				System.out.println("Digite uma opcao valida");
 				break;
 			}
 
@@ -99,10 +97,7 @@ public class Produto extends CadastroProduto {
 		System.out.println("*****************************_TELA DE ALTERACAO_**********************************");
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
 				+ "ALTERAÇÃO DE PRODUTO");
-		System.out.println("digite o nome do produto:");
-		teclado.nextLine();
-		String consulta = teclado.nextLine();
-
+		String consulta = Console.read("digite o nome do produto: ");
 		for (int i = 0; i < cadastro.size(); i++) {
 			if (cadastro.get(i).getNome().contains(consulta)) {
 				System.out.println("digite novo preco");
@@ -144,66 +139,61 @@ public class Produto extends CadastroProduto {
 
 //metodo para poder consultatr
 	protected static void consultar() {
+		boolean achou = false;
 		System.out.println("*****************************_TELA DE CONSULTAR_**********************************");
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
 				+ "CONSULTA DE PRODUTO");
-		System.out.println("digite o nome do produto:");
-		System.out.println();
-		String consulta = teclado.nextLine();
-		boolean achou = false;
+		String consulta = Console.read("digite o nome do produto: ");
+
 		for (int i = 0; i < cadastro.size(); i++) {
 			if (cadastro.get(i).getNome().contains(consulta)) {
 				System.out.println("Produto \nNome: " + cadastro.get(i).getNome() + "\nPreco unitaria: "
 						+ cadastro.get(i).getPreco() + "\nUnidade de medida: " + cadastro.get(i).getUnidade()
 						+ "\nquantidade de estoque: " + cadastro.get(i).getEstoque());
+				achou = true;
 			}
-			achou = true;
+
 		}
-		if (!achou) {
+
+		if (achou != true) {
 			System.out.println("Produto não cadastrado");
 		}
 	}
 
 //metodo para excluir , ele deleta apartir do inicial
 	public static void exclusao() {
+		boolean achou = false;
 		System.out.println(
 				"*****************************_TELA DE EXCLUSAO DE PRODUTO_**********************************");
-
 		System.out.println("EMPRESA DE IMPORTAÇÃO DE PRODUTOS LTDA.\r\n" + "SISTEMA DE CONTROLE DE ESTOQUE\r\n"
 				+ "EXCLUSÃO DE PRODUTO");
-		System.out.println("digite o nome do produto:");
-		teclado.nextLine();
-		String consulta = teclado.nextLine();
-		boolean achou = false;
+		String consulta = Console.read("digite o nome do produto: ");
 		for (int i = 0; i < cadastro.size(); i++) {
 			if (cadastro.get(i).getNome().contains(consulta)) {
-				System.out.println("CONFIRMA EXCLUSÃO (S/N)?");
-				String op = teclado.nextLine();
-				if (op == "s") {
+				String op = Console.read("CONFIRMA EXCLUSÃO (S/N)? ");
+				if (op.equals("s")) {
 					cadastro.remove(i).getNome();
-
+					System.out.println("Produto deletado");
 				}
-				achou = true;
-			}
-			if (!achou) {
-				System.out.println("Produto não cadastrado");
-			}
 
+			}
+			achou = true;
+		}
+		if (!achou) {
+			System.out.println("bosdta");
 		}
 	}
 
 	/// validação do nome de cadastro junto com a validação de quantidade e valo
 	public static void ValidacaoProduto() {
-		teclado.nextLine();
-		System.out.println("Nome do produto");
-		String nome = teclado.nextLine().toLowerCase();
 		boolean achou = false;
-			for (int i = 0; i < cadastro.size(); i++) {
-				if (cadastro.get(i).getNome().equals(nome)) {/// cadastro.get(i).getNome().contains(nome)
-					System.out.println("Produto ja cadastrado");
-					achou = true;
-				}
+		String nome = Console.read("Nome do produto ");
+		for (int i = 0; i < cadastro.size(); i++) {
+			if (cadastro.get(i).getNome().equals(nome)) {
+				System.out.println("Produto ja cadastrado");
+				achou = true;
 			}
+		}
 		if (achou != true) {
 			System.out.println("Preco unitario");
 			double preco = teclado.nextDouble();
@@ -217,14 +207,12 @@ public class Produto extends CadastroProduto {
 			String unidade = teclado.nextLine();
 			System.out.println("quantidade de estoque");
 			int estoque = teclado.nextInt();
-			while (estoque <= 0) {		
+			while (estoque <= 0) {
 				System.out.println("Preco abaixo do permitido");
 				System.out.println("quantidade de estoque");
 				estoque = teclado.nextInt();
 			}
-			System.out.print("CONFIRMA INCLUS�O (S/N)? :");
-			teclado.nextLine();
-			String opcao = teclado.nextLine().toLowerCase();
+			String opcao = Console.read("CONFIRMA INCLUSAO (S/N)? :");
 			if (opcao.equals("s")) {
 				cadastro.add(new CadastroProduto(nome, preco, unidade, estoque));
 				System.out.println("Produto cadastrado com sucesso");
